@@ -12,9 +12,10 @@ express()
   .get('/logInUser', (req, res) => {
   	//controller
   		console.log("loginUser request");
+  		var one = req.query.userName;
 
-  		var par = {weight: 45};
-  		res.render('pages/main', par)
+  		var par = {weight: one};
+  		res.render('pages/main', par);
   })
 
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
