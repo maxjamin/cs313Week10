@@ -50,7 +50,7 @@ function getPerson(request, response) {
 function getPersonFromDb(id, password, callback) {
 	console.log("Getting person from DB with : " + id);
 
-	var sql = "SELECT * FROM Customer WHERE username = $1::varchar && user_password = $2::varchar";
+	var sql = "SELECT * FROM Customer WHERE username = $1::varchar AND user_password = $2::varchar";
 	var params = [id, password];
 
 	pool.query(sql, params, function(err, result) {
@@ -68,6 +68,9 @@ function getPersonFromDb(id, password, callback) {
 
 }
 
+/*
+billmaxer"
+email	"userOne@gmail.com"
+user_password	"Norway40065"
 
-
-
+*/
