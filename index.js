@@ -60,7 +60,7 @@ function getPersonFromDb(id, callback) {
 
 		console.log("Found result: " + JSON.stringify(result.rows));
 		callback(null, result.rows);
-		answer = result.rows;
+		answer = result[0];
 	});
 
 	return answer;
