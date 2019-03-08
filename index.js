@@ -19,7 +19,8 @@ express()
 
   .get('/logInUser', (req, res) => {
 
-	getPerson(req, res);		
+	var results = getPerson(req, res);
+	res.send(json(results[0]);	
   })
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
@@ -33,7 +34,8 @@ function getPerson(request, response) {
 			response.status(500).json({success: false, data: error});
 		} else {
 			var person = result[0];
-			response.status(200).json(result[0]);
+			//response.status(200).json(result[0]);
+			return result[0];
 		}
 	});
 }
