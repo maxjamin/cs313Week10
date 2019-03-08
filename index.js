@@ -3,7 +3,7 @@ const path = require('path')
 const PORT = process.env.PORT || 5000
 
 const { Pool } = require("pg")
-const connectionString = process.env.DATABASE_URL || "postgres://ta_user:ta_pass@localhost:5432/familyhistory"
+const connectionString = process.env.DATABASE_URL
 const pool = new Pool({connectionString: connectionString})
 
 
