@@ -22,7 +22,7 @@ express()
 
   		var par = {userName:name, password:pass};
 
-  		pool.connect();
+  		
   		pool.query('SELECT * FROM Customer WHERE user_id = $1', [1], (err, res) => {
   		if (err) {
     		throw err
@@ -30,10 +30,9 @@ express()
 
   		console.log('user:', res.rows[0])
 		})
-  		pool.end();
 
 
-  		res.render('pages/main', par);
+  		res.render('pages/main', res.rows[0]);
 
   })
 
