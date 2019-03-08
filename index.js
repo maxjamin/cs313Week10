@@ -14,7 +14,7 @@ express()
   		console.log("loginUser request");
   		var one = req.query.userName;
 
-  		var par = {weight: one};
+  		var par = {weight: one, two: 2};
   		res.render('pages/main', par);
   })
 
