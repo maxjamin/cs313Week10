@@ -27,16 +27,16 @@ express()
 function getPerson(request, response) {
 	// First get the person's id
 	var id = request.query.userName;
-	var answer;
+	var answer = 68;
 
 	getPersonFromDb(id, function(error, result) {
 		//callback function
-		console.log("Test01");
+		console.log("Test01" + answer);
 		if (error || result == null || result.length != 1) {
 			response.status(500).json({success: false, data: error});
 		} else {
 			var person = result[0];
-			response.send('pages/main', person);
+			response.render('pages/main', person);
 
 		}
 	});
