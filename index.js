@@ -3,6 +3,7 @@ const path = require('path')
 const PORT = process.env.PORT || 5000
 
 const { Pool } = require('pg')
+const connectionString = process.env.DATABASE_URL
 const pool = new Pool()
 
 express()
@@ -18,9 +19,6 @@ express()
   		var name = req.query.userName;
   		var pass = req.query.password;
 
-  	
-  		
-  		
   		res.render('pages/main', par);
 
   })
