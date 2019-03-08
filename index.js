@@ -8,7 +8,6 @@ const client = new Client({
   ssl: true,
 });
 
-client.connect();
 
 express()
   .use(express.static(path.join(__dirname, 'public')))
@@ -25,6 +24,7 @@ express()
 
   		var par = {userName:name, password:pass};
 
+  		client.connect();
   		pool.query('SELECT * FROM Customer WHERE user_id = $1', [1], (err, res) => {
   		if (err) {
     		throw err
@@ -32,7 +32,7 @@ express()
 
   		console.log('user:', res.rows[0])
 		})
-
+  		client.end();
 
 
   		res.render('pages/main', par);
