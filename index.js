@@ -27,12 +27,14 @@ express()
   		var par = {userName:name, password:pass};
 
   		
-  		client.query('SELECT * FROM Customer WHERE user_id= '+ 1, (err, res) => {
+  		client.query('SELECT * FROM Customer WHERE user_id= $1::int', name, (err, res) => {
   		if (err) {
-    		throw err
+    		console.log("Error in query: ")
+			console.log(err);
+			callback(err, null);
   		}
 
-  		console.log('user:', res.rows[0])
+  		console.log("TEST 01: " + res.rows);
 		})
 
 
