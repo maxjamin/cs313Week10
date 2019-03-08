@@ -2,9 +2,9 @@ const express = require('express')
 const path = require('path')
 const PORT = process.env.PORT || 5000
 
-const { Client } = require('pg');
+const { Pool } = require('pg');
 
-const client = new Client({
+const pool = new Client({
   connectionString: process.env.DATABASE_URL,
   ssl: true,
 });
