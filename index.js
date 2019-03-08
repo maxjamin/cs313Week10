@@ -8,4 +8,10 @@ express()
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/index'))
   .get('/main', (req, res) => res.render('pages/main'))
+
+  .get('/logInUser', function(req, res) {
+  	//controller
+  		console.log("loginUser request");
+  })
+
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
