@@ -17,6 +17,8 @@ express()
   		var name = req.query.userName;
   		var pass = req.query.password;
 
+  		var par = {userName:name, password:pass};
+
   		res.render('pages/main', par);
 
   })
