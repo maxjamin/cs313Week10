@@ -24,11 +24,11 @@ express()
   		var pass = req.query.password;
 
 		try {
-      		const client = await pool.connect()
-      		const result = await client.query('SELECT * FROM Customers');
+      		const client = pool.connect()
+      		const result = client.query('SELECT * FROM Customers');
       		const results = { 'results': (result) ? result.rows : null};
 
-      		res.render('pages/main', res.rows[0]);
+      		res.render('pages/main', results);
       		client.release();
 
     	} catch (err) {
