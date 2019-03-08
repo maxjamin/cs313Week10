@@ -17,7 +17,7 @@ express()
 
   		var par = {userName: name, password: pass};
   		res.render('pages/main', par);
-  		document.body.style.backgroundColor = 'fuchsia';
+  		
   })
 
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
