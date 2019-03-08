@@ -8,7 +8,6 @@ const client = new Client({
   connectionString: process.env.DATABASE_URL,
   ssl: true,
 });
-client.connect();
 
 
 express()
@@ -24,20 +23,16 @@ express()
   		var name = req.query.userName;
   		var pass = req.query.password;
 
-  		var par = {userName:name, password:pass};
-  		var sql = 'SELECT * FROM Customer WHERE user_id= $1::int';
-  		var params = 1;
-  		
-  		client.query(sql, params, (err, res) => {
-  		if (err) {
-    		console.log("Error in query: ")
-			console.log(err);
-			callback(err, null);
-  		}
-
-  		console.log("TEST 01: " + res.rows);
-		})
-
+		try {
+      		const client = await pool.connect()
+      		const result = await client.query('SELECT * FROM Customers');
+      		const results = { 'results': (result) ? result.rows : null};
+      		res.render('pages/db', results );
+      		client.release();
+    	} catch (err) {
+      		console.error(err);
+      		res.send("Error " + err);
+    	}  		
 
   		res.render('pages/main', res.rows[0]);
 
