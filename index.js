@@ -25,9 +25,10 @@ express()
   		var pass = req.query.password;
 
   		var par = {userName:name, password:pass};
-
+  		var sql = 'SELECT * FROM Customer WHERE user_id= $1::int';
+  		var params = 1;
   		
-  		client.query('SELECT * FROM Customer WHERE user_id= $1::int', name, (err, res) => {
+  		client.query(sql, params, (err, res) => {
   		if (err) {
     		console.log("Error in query: ")
 			console.log(err);
