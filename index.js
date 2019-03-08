@@ -9,7 +9,7 @@ express()
   .get('/', (req, res) => res.render('pages/index'))
   .get('/main', (req, res) => res.render('pages/main'))
 
-  .get('/logInUser', function(req, res) {
+  .get('/logInUser', (req, res) => {
   	//controller
   		console.log("loginUser request");
   })
