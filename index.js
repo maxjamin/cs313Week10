@@ -3,7 +3,12 @@ const path = require('path')
 const PORT = process.env.PORT || 5000
 
 const { Pool } = require('pg')
-const pool = new Pool()
+const client = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: true,
+});
+
+client.connect();
 
 express()
   .use(express.static(path.join(__dirname, 'public')))
