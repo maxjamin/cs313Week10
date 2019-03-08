@@ -26,19 +26,19 @@ express()
 function getPerson(request, response) {
 	// First get the person's id
 	var id = request.query.userName;
+	var answer;
 
-	var x = getPersonFromDb(id, function(error, result) {
+	getPersonFromDb(id, function(error, result) {
 		//callback function
 		if (error || result == null || result.length != 1) {
 			response.status(500).json({success: false, data: error});
 		} else {
 			var person = result[0];
 			//response.status(200).json(result[0]);
-			return result[0];
+			answer = json(result[0]);
+
 		}
 	});
-
-	response.send(json(x));
 }
 
 
