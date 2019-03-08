@@ -19,8 +19,7 @@ express()
 
   .get('/logInUser', (req, res) => {
 
-	var results = getPerson(req, res);
-	res.send(json(results[0]);	
+	getPerson(req, res);		
   })
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
@@ -28,7 +27,7 @@ function getPerson(request, response) {
 	// First get the person's id
 	var id = request.query.userName;
 
-	getPersonFromDb(id, function(error, result) {
+	var x = getPersonFromDb(id, function(error, result) {
 		//callback function
 		if (error || result == null || result.length != 1) {
 			response.status(500).json({success: false, data: error});
@@ -38,6 +37,8 @@ function getPerson(request, response) {
 			return result[0];
 		}
 	});
+
+	response.send(json(x));
 }
 
 
