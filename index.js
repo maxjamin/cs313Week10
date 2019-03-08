@@ -36,7 +36,7 @@ function getPerson(request, response) {
 			response.status(500).json({success: false, data: error});
 		} else {
 			var person = result[0];
-			response.render('pages/main', person);
+			response.send('pages/main', person);
 
 		}
 	});
