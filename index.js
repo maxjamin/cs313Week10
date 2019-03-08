@@ -21,8 +21,7 @@ express()
 
 	getPerson(req, res);		
   })
-  
-.listen(PORT, () => console.log(`Listening on ${ PORT }`))
+  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
 function getPerson(request, response) {
 	// First get the person's id
@@ -44,7 +43,7 @@ function getPerson(request, response) {
 function getPersonFromDb(id, callback) {
 	console.log("Getting person from DB with id: " + id);
 
-	var sql = "SELECT * FROM Customers WHERE user_id = $1::int";
+	var sql = "SELECT * FROM Customer WHERE user_id = $1::int";
 	var params = [id];
 
 	pool.query(sql, params, function(err, result) {
