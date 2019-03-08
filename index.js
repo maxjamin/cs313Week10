@@ -2,6 +2,8 @@ const express = require('express')
 const path = require('path')
 const PORT = process.env.PORT || 5000
 
+var express = require('express');
+var app = express();
 
 express()
   .use(express.static(path.join(__dirname, 'public')))
@@ -10,8 +12,6 @@ express()
   .get('/', (req, res) => res.render('pages/index'))
   .get('/main', (req, res) => res.render('pages/main'))
 
-  const { Pool } = require('pg')
-  const pool = new Pool()
   .get('/logInUser', (req, res) => {
   	//controller
   		console.log("loginUser request");
