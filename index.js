@@ -26,19 +26,19 @@ express()
 function getPerson(request, response) {
 	// First get the person's id
 	var id = request.query.userName;
-	var answer;
 
-	getPersonFromDb(id, function(error, result) {
+	var x = getPersonFromDb(id, function(error, result) {
 		//callback function
 		if (error || result == null || result.length != 1) {
 			response.status(500).json({success: false, data: error});
 		} else {
 			var person = result[0];
 			//response.status(200).json(result[0]);
-			answer = json(result[0]);
+			//answer = JSON.parse(result[0]);
 
 		}
 	});
+	response.send(x);
 }
 
 
@@ -48,6 +48,7 @@ function getPersonFromDb(id, callback) {
 
 	var sql = "SELECT * FROM Customer WHERE username = $1::varchar";
 	var params = [id];
+	var answer;
 
 	pool.query(sql, params, function(err, result) {
 		// If an error occurred...
@@ -59,8 +60,10 @@ function getPersonFromDb(id, callback) {
 
 		console.log("Found result: " + JSON.stringify(result.rows));
 		callback(null, result.rows);
+		answer = result.rows;
 	});
 
+	return answer;
 }
 
 
