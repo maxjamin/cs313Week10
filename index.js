@@ -27,7 +27,7 @@ express()
   		var par = {userName:name, password:pass};
 
   		
-  		client.query('SELECT * FROM Customer', (err, res) => {
+  		client.query('SELECT * FROM Customer WHERE user_id= $1', (err, res) => {
   		if (err) {
     		throw err
   		}
