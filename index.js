@@ -12,9 +12,10 @@ express()
   .get('/logInUser', (req, res) => {
   	//controller
   		console.log("loginUser request");
-  		var one = req.query.userName;
+  		var name = req.query.userName;
+  		var pass = req.query.password;
 
-  		var par = {weight: one, two: 2};
+  		var par = {userName: name, password: pass};
   		res.render('pages/main', par);
   })
 
