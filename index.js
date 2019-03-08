@@ -16,7 +16,7 @@ express()
   		var pass = req.query.password;
 
   		var par = {userName: name, password: pass};
-  		res.render('pages/main', par);
+  		res.end('Test 01');
   })
 
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
