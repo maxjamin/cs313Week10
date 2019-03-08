@@ -30,7 +30,7 @@ function getPerson(request, response) {
 	var pssword = request.query.password;
 	var answer = 68;
 
-	getPersonFromDb(id, pssword, function(error, result) {
+	var x = getPersonFromDb(id, pssword, function(error, result) {
 		//callback function
 		console.log("Test01" + answer);
 		if (error || result == null || result.length != 1) {
@@ -38,7 +38,6 @@ function getPerson(request, response) {
 		} else {
 			var person = result[0];
 			//response.render('pages/main', person);
-			response.status(200).json(result[0]);
 
 		}
 	});
@@ -63,9 +62,9 @@ function getPersonFromDb(id, password, callback) {
 
 		console.log("Found result: " + JSON.stringify(result.rows));
 		callback(null, result.rows);
-		console.log("Test02");
+		
 	});
-
+	return result.rows;
 }
 
 /*
