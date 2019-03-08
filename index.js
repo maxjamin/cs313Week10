@@ -19,7 +19,8 @@ express()
 
   .get('/logInUser', (req, res) => {
 
-	getPerson(req, res);		
+	getPerson(req, res);
+	console.log("Test04")		
   })
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
@@ -30,15 +31,16 @@ function getPerson(request, response) {
 
 	getPersonFromDb(id, function(error, result) {
 		//callback function
+		console.log("Test01");
 		if (error || result == null || result.length != 1) {
 			response.status(500).json({success: false, data: error});
 		} else {
 			var person = result[0];
-			var answer = JSON.parse(result[0])
-			response.render('pages/main', answer);
+			response.status(200).json(result[0]);
 
 		}
 	});
+	console.log("Test03");
 }
 
 
@@ -59,6 +61,7 @@ function getPersonFromDb(id, callback) {
 
 		console.log("Found result: " + JSON.stringify(result.rows));
 		callback(null, result.rows);
+		console.log("Test02");
 	});
 
 }
