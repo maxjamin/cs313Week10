@@ -18,25 +18,9 @@ express()
   		var name = req.query.userName;
   		var pass = req.query.password;
 
-  		pool.on('error', (err, client) => {
-  		console.error('Unexpected error on idle client', err)
-  		process.exit(-1)
-		})
-
-  		// callback - checkout a client
-		pool.connect((err, client, done) => {
-		  if (err) throw err
-		  client.query('SELECT * FROM Customer WHERE user_id = $1', [1], (err, res) => {
-		    done()
-
-		    if (err) {
-		      console.log(err.stack)
-		    } else {
-		      console.log(res.rows[0])
-		    }
-		  })
-		})
-
+  	
+  		
+  		
   		res.render('pages/main', par);
 
   })
