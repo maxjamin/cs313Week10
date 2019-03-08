@@ -21,7 +21,8 @@ express()
 
 	getPerson(req, res);		
   })
-
+  
+.listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
 function getPerson(request, response) {
 	// First get the person's id
@@ -61,8 +62,6 @@ function getPersonFromDb(id, callback) {
 
 }
 
-
-  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
 
 
