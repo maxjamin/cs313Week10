@@ -27,9 +27,10 @@ express()
 function getPerson(request, response) {
 	// First get the person's id
 	var id = request.query.userName;
+	var pssword = request.query.password;
 	var answer = 68;
 
-	getPersonFromDb(id, function(error, result) {
+	getPersonFromDb(id, pssword, function(error, result) {
 		//callback function
 		console.log("Test01" + answer);
 		if (error || result == null || result.length != 1) {
@@ -46,11 +47,11 @@ function getPerson(request, response) {
 
 
 
-function getPersonFromDb(id, callback) {
+function getPersonFromDb(id, password, callback) {
 	console.log("Getting person from DB with : " + id);
 
-	var sql = "SELECT * FROM Customer WHERE username = $1::varchar";
-	var params = [id];
+	var sql = "SELECT * FROM Customer WHERE username = $1::varchar && user_password = $2::varchar";
+	var params = [id, password];
 
 	pool.query(sql, params, function(err, result) {
 		// If an error occurred...
