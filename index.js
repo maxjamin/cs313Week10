@@ -2,8 +2,6 @@ const express = require('express')
 const path = require('path')
 const PORT = process.env.PORT || 5000
 
-var express = require('express');
-var app = express();
 
 express()
   .use(express.static(path.join(__dirname, 'public')))
@@ -19,6 +17,16 @@ express()
   		var pass = req.query.password;
 
   		var par = {userName:name, password:pass};
+
+  		pool.query('SELECT * FROM Customer WHERE user_id = $1', [1], (err, res) => {
+  		if (err) {
+    		throw err
+  		}
+
+  		console.log('user:', res.rows[0])
+		})
+
+
 
   		res.render('pages/main', par);
 
