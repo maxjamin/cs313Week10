@@ -14,7 +14,7 @@ express()
   		console.log("loginUser request");
 
   		var par = {weight: 45};
-  		res.render('/main', par)
+  		res.render('pages/main', par)
   })
 
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
