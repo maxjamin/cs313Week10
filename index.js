@@ -2,6 +2,9 @@ const express = require('express')
 const path = require('path')
 const PORT = process.env.PORT || 5000
 
+const { Pool } = require('pg')
+const pool = new Pool()
+
 express()
   .use(express.static(path.join(__dirname, 'public')))
   .set('views', path.join(__dirname, 'views'))
@@ -15,9 +18,27 @@ express()
   		var name = req.query.userName;
   		var pass = req.query.password;
 
-  		var par = {userName: name, password: pass};
+  		pool.on('error', (err, client) => {
+  		console.error('Unexpected error on idle client', err)
+  		process.exit(-1)
+		})
+
+  		// callback - checkout a client
+		pool.connect((err, client, done) => {
+		  if (err) throw err
+		  client.query('SELECT * FROM Customer WHERE user_id = $1', [1], (err, res) => {
+		    done()
+
+		    if (err) {
+		      console.log(err.stack)
+		    } else {
+		      console.log(res.rows[0])
+		    }
+		  })
+		})
+
   		res.render('pages/main', par);
-  		
+
   })
 
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
