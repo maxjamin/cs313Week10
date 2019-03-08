@@ -34,7 +34,8 @@ function getPerson(request, response) {
 			response.status(500).json({success: false, data: error});
 		} else {
 			var person = result[0];
-			response.send(JSON.parse(result[0]));
+			var answer = JSON.parse(result[0])
+			response.render('pages/main', answer);
 
 		}
 	});
