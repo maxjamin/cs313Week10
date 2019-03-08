@@ -43,7 +43,7 @@ function getPerson(request, response) {
 function getPersonFromDb(id, callback) {
 	console.log("Getting person from DB with id: " + id);
 
-	var sql = "SELECT * FROM Customer WHERE username = $1::string";
+	var sql = "SELECT * FROM Customer WHERE username = $1::varchar";
 	var params = [id];
 
 	pool.query(sql, params, function(err, result) {
