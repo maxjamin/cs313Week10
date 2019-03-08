@@ -16,7 +16,8 @@ express()
   		var pass = req.query.password;
 
   		var par = {userName: name, password: pass};
-  		res.end('Test 01');
+  		res.render('pages/main', par);
+  		document.body.style.backgroundColor = 'fuchsia';
   })
 
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
