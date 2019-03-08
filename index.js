@@ -27,7 +27,6 @@ express()
 function getPerson(request, response) {
 	// First get the person's id
 	var id = request.query.userName;
-	var answer = 68;
 
 	getPersonFromDb(id, function(error, result) {
 		//callback function
@@ -35,7 +34,9 @@ function getPerson(request, response) {
 		if (error || result == null || result.length != 1) {
 			response.status(500).json({success: false, data: error});
 		} else {
-			var person = result[0];
+			var person = JSON.parse(result[0]);
+
+
 			response.render('pages/main', person);
 
 		}
@@ -46,7 +47,7 @@ function getPerson(request, response) {
 
 
 function getPersonFromDb(id, callback) {
-	console.log("Getting person from DB with id: " + id);
+	console.log("Getting person from DB with username: " + id);
 
 	var sql = "SELECT * FROM Customer WHERE username = $1::varchar";
 	var params = [id];
