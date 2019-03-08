@@ -18,25 +18,49 @@ express()
   .get('/main', (req, res) => res.render('pages/main'))
 
   .get('/logInUser', (req, res) => {
-  	//controller
-  		console.log("loginUser request");
-  		var name = req.query.userName;
-  		var pass = req.query.password;
 
-		try {
-      		const client = pool.connect()
-      		const result = client.query('SELECT * FROM Customers');
-      		const results = { 'results': (result) ? result.rows : null};
-
-      		res.render('pages/main', results);
-      		client.release();
-
-    	} catch (err) {
-      		console.error(err);
-      		res.send("Error " + err);
-    	}  		
-
+	getPerson(req, res);		
   })
+
+
+function getPerson(request, response) {
+	// First get the person's id
+	var id = request.query.userName;
+
+	getPersonFromDb(id, function(error, result) {
+		//callback function
+		if (error || result == null || result.length != 1) {
+			response.status(500).json({success: false, data: error});
+		} else {
+			var person = result[0];
+			response.status(200).json(result[0]);
+		}
+	});
+}
+
+
+
+function getPersonFromDb(id, callback) {
+	console.log("Getting person from DB with id: " + id);
+
+	var sql = "SELECT * FROM Customers WHERE user_id = $1::int";
+	var params = [id];
+
+	pool.query(sql, params, function(err, result) {
+		// If an error occurred...
+		if (err) {
+			console.log("Error in query: ")
+			console.log(err);
+			callback(err, null);
+		}
+
+		// Log this to the console for debugging purposes.
+		console.log("Found result: " + JSON.stringify(result.rows));
+		callback(null, result.rows);
+	});
+
+}
+
 
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
