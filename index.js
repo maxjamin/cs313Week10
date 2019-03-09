@@ -39,7 +39,7 @@ function getPerson(request, response) {
 			var person = result[0];
 			//response.render('pages/main', person);
 			//response.write(JSON.stringify(person));
-			response.render('pages/results01', JSON.stringify(person));
+			response.render('pages/main', JSON.stringify(person));
 
 		}
 	});
