@@ -7,8 +7,8 @@
 	function getUser() {
 		console.log("getUser called");
 
-		var username = document.getElementsByName("userName").innerHTML;
-		var password = document.getElementsByName("password").innerHTML;
+		var username = document.getElementById("userName");
+		var password = document.getElementById("password");
 		console.log("The username: " + username + " " + password);
 
 		var xhttp;
@@ -30,9 +30,9 @@
 
 	<form action="javascript:getUser();">
 		username:<br>
-		<input type="text" name='userName'><br>
+		<input type="text" id='userName' name='userName'><br>
 		password:<br>
-		<input type="text" name='password'><br>
+		<input type="text" id='password' name='password'><br>
 		<input type="submit" value="Submit">
 	</form>
 
