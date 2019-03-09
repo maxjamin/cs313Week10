@@ -9,7 +9,9 @@
 
 		var username = document.getElementById("userName").value;
 		var password = document.getElementById("password").value;
-		console.log("The username: " + username + " " + password);
+
+		var inputValue = "/logInUser?userName=" + username + "&password=" + password;
+		console.log("The input value: " + inputValue);
 
 		var xhttp;
  		xhttp = new XMLHttpRequest();
@@ -18,7 +20,7 @@
     		document.getElementById("demo").innerHTML = this.responseText;
   		}
 			};
-		xhttp.open("GET", "/logInUser?userName="+ userName +"&password=" + password, true);
+		xhttp.open("GET", "/logInUser?userName=billmaxer&password=Norway40065", true);
 		xhttp.send(); 
 	}
 	</script>
