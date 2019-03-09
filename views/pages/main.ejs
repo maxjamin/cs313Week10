@@ -7,8 +7,8 @@
 	function getUser() {
 		console.log("getUser called");
 
-		var username = document.getElementsByName("userName").value;
-		var password = document.getElementsByName("password").value;
+		var username = document.getElementsByName("userName").innerHTML;
+		var password = document.getElementsByName("password").innerHTML;
 		console.log("The username: " + username + " " + password);
 
 		var xhttp;
