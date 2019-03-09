@@ -17,7 +17,7 @@ express()
   .get('/', (req, res) => res.render('pages/index'))
   .get('/main', (req, res) => res.render('pages/main'))
 
-  .get('/logInUser', (req, res) => {
+  .post('/logInUser', (req, res) => {
 
 	getPerson(req, res);
 	console.log("Test04")		
