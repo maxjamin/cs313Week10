@@ -38,9 +38,9 @@ function getPerson(request, response) {
 			response.status(500).json({success: false, data: error});
 		} else {
 			var person = result[0];
-			//response.render('pages/main', person);
-			//response.write(JSON.stringify(person));
-			response.render('results01', person);
+			
+			response.write(JSON.stringify(person));
+			
 
 		}
 	});
