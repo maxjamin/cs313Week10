@@ -13,7 +13,7 @@
     		document.getElementById("demo").innerHTML = this.responseText;
   		}
 			};
-		xhttp.open("GET", "/logInUser", true);
+		xhttp.open("GET", "/logInUser?userName=billmaxer&password=Norway40065", true);
 		xhttp.send(); 
 	}
 	</script>
@@ -21,7 +21,7 @@
 <body>
 	<p>Week 10 Test</p>
 
-	<% include ../partials/logIn.ejs %> 	
+	<!--<% include ../partials/logIn.ejs %> -->
 
 	<form action="javascript:getUser();">
 		username:<br>
