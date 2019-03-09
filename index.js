@@ -17,7 +17,7 @@ express()
   .get('/', (req, res) => res.render('pages/index'))
   .get('/main', (req, res) => res.render('pages/main'))
 
-  .post('/logInUser', (req, res) => {
+  .get('/logInUser', (req, res) => {
 
 	getPerson(req, res);
 	console.log("Test04")		
@@ -36,8 +36,9 @@ function getPerson(request, response) {
 		if (error || result == null || result.length != 1) {
 			response.status(500).json({success: false, data: error});
 		} else {
-			var person = result[0];
-			response.render('pages/main', person);
+			var person = jresult[0];
+			//response.render('pages/main', person);
+			response.send(person);
 
 		}
 	});
