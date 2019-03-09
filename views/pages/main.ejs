@@ -10,9 +10,7 @@
 		var username = document.getElementById("userName").value;
 		var password = document.getElementById("password").value;
 
-		//var inputValue = "/logInUser?userName=" + username + "&password=" + password;
-		var inputValue = "GET /users HTTP/1.1 Host: myserver Content-Type: application/xml <?xml version="1.0"?><user><userName>"+username+"</userName><password>"+password+"</password></user>"
-
+		var inputValue = "/logInUser?userName=" + username + "&password=" + password;
 		console.log("The input value: " + inputValue);
 
 		var xhttp;
