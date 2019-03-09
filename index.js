@@ -38,7 +38,7 @@ function getPerson(request, response) {
 		} else {
 			var person = result[0];
 			//response.render('pages/main', person);
-			response.render('main', person);
+			response.write(JSON.stringify(person));
 
 		}
 	});
