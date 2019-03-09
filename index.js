@@ -16,6 +16,7 @@ express()
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/index'))
   .get('/main', (req, res) => res.render('pages/main'))
+  .get('/results01', (req, res) => res.render('pages/results01'))
 
   .get('/logInUser', (req, res) => {
 
