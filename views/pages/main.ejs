@@ -18,7 +18,7 @@
     		document.getElementById("demo").innerHTML = this.responseText;
   		}
 			};
-		xhttp.open("GET", "/logInUser?userName=billmaxer&password=Norway40065", true);
+		xhttp.open("GET", "/logInUser?userName="+ userName +"&password=" + password, true);
 		xhttp.send(); 
 	}
 	</script>
